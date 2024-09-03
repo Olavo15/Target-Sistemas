@@ -1,5 +1,5 @@
 
-string = input("")
+string = input("Escreva o que quer inverter: \n")
 
 
 def inverter_string(s):
