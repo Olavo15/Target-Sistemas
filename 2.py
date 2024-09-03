@@ -5,13 +5,28 @@ def fibonacci_sequence(limit):
     return sequence
 
 def is_fibonacci_number(number):
-    sequence = fibonacci_sequence(number)
-    if number in sequence:
-        return f"O número {number} pertence à sequência de Fibonacci."
-    else:
-        return f"O número {number} **não** pertence à sequência de Fibonacci."
+   
+    if number < 0:
+        return False
+    sequence = fibonacci_sequence(number + 1)
+    return number in sequence
+
+def check_fibonacci_numbers(numbers):
+    
+    results = []
+    for number in numbers:
+        if is_fibonacci_number(number):
+            results.append(f"O número {number} pertence à sequência de Fibonacci.")
+        else:
+            results.append(f"O número {number} **não** pertence à sequência de Fibonacci.")
+    return results
 
 
-num = int(input("Informe um número: "))
-resultado = is_fibonacci_number(num)
-print(resultado)
+input_values = input("Informe um número ou uma sequência de números separados por espaço: ")
+
+numbers = list(map(int, input_values.split()))
+
+
+results = check_fibonacci_numbers(numbers)
+for result in results:
+    print(result)
